@@ -91,7 +91,8 @@ async function run() {
               Name: updatedOrder.Name,
               Email: updatedOrder.Email,
               Mobile: updatedOrder.Mobile,
-              Address: updatedOrder.Address
+              Address: updatedOrder.Address,
+              Status: updatedOrder.Status
           }
       }
       const result = await bookingcollection.updateOne(filter, updateOrder, options);
