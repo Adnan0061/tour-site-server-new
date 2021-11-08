@@ -71,7 +71,7 @@ async function run() {
     app.get('/order/:id', async (req, res) => {
       const id = req.params.id  
       // console.log('getting specific service', id)
-      const query = { _id: id};
+      const query = { _id: ObjectId(id)};
       const order = await bookingcollection.findOne(query);
       res.json(order);
       // console.log(order);
@@ -84,7 +84,7 @@ async function run() {
       const id = req.params.id;
       const updatedOrder = req.body;
       console.log('hitting put', id,)
-      const filter = { _id: id};
+      const filter = { _id: ObjectId(id)};
       const options = { upsert: true }
       const updateOrder = {
           $set: {
@@ -101,7 +101,7 @@ async function run() {
     //Delete Order API
     app.delete('/order/:id', async (req, res) => {
       const id = req.params.id;
-      const query = { _id: id};
+      const query = { _id: ObjectId(id)};
       const result = await bookingcollection.deleteOne(query);
       res.json(result);
     })
